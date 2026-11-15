@@ -57,6 +57,21 @@ export const mr = {
   stepOf: "टप्पा",
   noPending: "कोणतेही प्रलंबित अर्ज नाहीत",
   language: "भाषा",
+  signup: "नवीन खाते उघडा",
+  createAccount: "खाते तयार करा",
+  fullName: "पूर्ण नाव",
+  role: "पदनाम",
+  usernameHint: "४-२० अक्षरे: इंग्रजी अक्षरे, अंक किंवा _",
+  passwordHint: "किमान ८ अक्षरे",
+  haveAccount: "आधीच खाते आहे?",
+  noAccount: "खाते नाही?",
+  signupErrors: {
+    name: "नाव लिहा (किमान २ अक्षरे)",
+    username: "वापरकर्ता नाव ४-२० अक्षरांचे असावे (a-z, 0-9, _)",
+    password: "पासवर्ड किमान ८ अक्षरांचा असावा",
+    role: "पदनाम निवडा",
+    exists: "हे वापरकर्ता नाव आधीच वापरात आहे",
+  },
 } as const;
 
 export const stepLabel: Record<StepKey, string> = {
