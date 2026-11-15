@@ -2,7 +2,7 @@
 
 A small workflow tool in **Marathi** for the field-level government worker (Krushi Sahayak / Talathi) who processes **crop-damage compensation applications** (पीक नुकसान भरपाई) after unseasonal rain or flood.
 
-Live demo: see the link in the submission email. Test logins: `officer1` / `Demo@1234` and `officer2` / `Demo@1234`. All data is fake.
+Live demo: see the link in the submission email. Test logins: `officer1` / `Demo@1234` and `officer2` / `Demo@1234`, or create your own account on the sign-up page. All data is fake.
 
 ## 1. The problem and who it affects
 
@@ -63,7 +63,7 @@ Why I think it works: the delays come from invisible queues and late-found missi
 - **Next.js 14 (App Router) + TypeScript.** Server components for the pages, small client component only for the action panel. Works with Netlify out of the box.
 - **Workflow as a pure function** (`lib/workflow.ts`): `applyAction(app, input)` returns a new application or throws a typed error. All rules (document gate, inspection validation, reasons required, final states are immutable) live there and are covered by tests. Routes and UI contain no business logic.
 - **Storage behind a small interface** (`lib/store.ts`). The demo uses an in-memory seed so it runs anywhere with no setup. **Data resets on cold start and is per server instance**, so on a serverless host an action may occasionally be lost between requests. Production would use Postgres (applications table plus an append-only `history` table); the interface was shaped for that swap.
-- **Auth is demo-grade**: an httpOnly cookie with the username. Real use needs signed sessions and the state's identity provider.
+- **Auth is simple but not naive**: sign-up and login with scrypt-hashed passwords, and an httpOnly, HMAC-signed session cookie (set `SESSION_SECRET` in production). New accounts are stored in Netlify Blobs on Netlify and in memory locally. Real use needs the state's identity provider, OTP and role-based permissions.
 - **Marathi first**: all UI strings are in `lib/i18n.ts`; large tap targets (44px), single column, high contrast, readable on a cheap phone in the field. Marathi is the only language so far; adding Hindi/English means adding another strings file.
 - **No external services needed to run.** Gemini is optional.
 
