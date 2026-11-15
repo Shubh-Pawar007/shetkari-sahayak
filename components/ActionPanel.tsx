@@ -51,7 +51,7 @@ export default function ActionPanel(props: {
   return (
     <div>
       <p>
-        <button className="btn sec" onClick={askAi} disabled={busy}>{busy && !ai ? mr.aiThinking : `✨ ${mr.aiHelp}`}</button>
+        <button className="btn sec" onClick={askAi} disabled={busy}>{busy && !ai ? mr.aiThinking : `AI · ${mr.aiHelp}`}</button>
       </p>
       {ai && (
         <div className="card ai">

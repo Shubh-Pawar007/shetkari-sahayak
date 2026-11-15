@@ -19,7 +19,7 @@ export default function Detail({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <p><Link href="/">← {mr.back}</Link></p>
+      <p><Link className="btn sec" href="/">← {mr.back}</Link></p>
       <h2>{a.applicantName} <small>({a.id})</small> <span className={`badge ${a.status}`}>{statusLabel[a.status]}</span></h2>
 
       <div className="steps">
