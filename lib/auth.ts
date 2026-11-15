@@ -1,10 +1,10 @@
 import { cookies } from "next/headers";
-import { OFFICERS } from "./store.ts";
+import { findUser, unsign } from "./users.ts";
 
-// Demo-grade auth: the cookie holds only the username. Fine for a test deployment with fake data;
-// real use needs signed sessions and the state's identity provider (see README).
-export function currentOfficer(): { username: string; name: string } | null {
-  const u = cookies().get("officer")?.value;
-  if (!u || !OFFICERS[u]) return null;
-  return { username: u, name: OFFICERS[u].name };
+export async function currentOfficer(): Promise<{ username: string; name: string } | null> {
+  const u = unsign(cookies().get("officer")?.value);
+  if (!u) return null;
+  const user = await findUser(u);
+  if (!user) return null;
+  return { username: user.username, name: `${user.role} - ${user.name}` };
 }

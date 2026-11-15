@@ -9,8 +9,8 @@ import ActionPanel from "@/components/ActionPanel.tsx";
 
 export const dynamic = "force-dynamic";
 
-export default function Detail({ params }: { params: { id: string } }) {
-  if (!currentOfficer()) redirect("/login");
+export default async function Detail({ params }: { params: { id: string } }) {
+  if (!(await currentOfficer())) redirect("/login");
   const a = getApplication(params.id);
   if (!a) notFound();
   const cur = STEPS.indexOf(a.step);

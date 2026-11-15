@@ -7,8 +7,8 @@ import { mr, stepLabel, statusLabel } from "@/lib/i18n.ts";
 
 export const dynamic = "force-dynamic";
 
-export default function Home() {
-  if (!currentOfficer()) redirect("/login");
+export default async function Home() {
+  if (!(await currentOfficer())) redirect("/login");
   const apps = listApplications()
     .map((a) => ({ a, p: priorityScore(a) }))
     .sort((x, y) => y.p - x.p);

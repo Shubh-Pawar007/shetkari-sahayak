@@ -4,7 +4,7 @@ import { getApplication, logAi } from "@/lib/store.ts";
 import { assist } from "@/lib/ai.ts";
 
 export async function POST(_req: Request, { params }: { params: { id: string } }) {
-  const o = currentOfficer();
+  const o = await currentOfficer();
   if (!o) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   const a = getApplication(params.id);
   if (!a) return NextResponse.json({ error: "not_found" }, { status: 404 });

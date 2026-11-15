@@ -4,7 +4,7 @@ import { act } from "@/lib/store.ts";
 import { WorkflowError } from "@/lib/workflow.ts";
 
 export async function POST(req: Request, { params }: { params: { id: string } }) {
-  const o = currentOfficer();
+  const o = await currentOfficer();
   if (!o) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   const body = await req.json().catch(() => null);
   if (!body || !["advance", "return", "approve", "reject"].includes(body.action))

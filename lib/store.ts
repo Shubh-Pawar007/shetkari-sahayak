@@ -55,7 +55,3 @@ export function logAi(id: string, by: string, summary: string): void {
   a.history.push({ at: new Date().toISOString(), by, type: "ai_used", step: a.step, note: summary.slice(0, 200) });
 }
 
-export const OFFICERS: Record<string, { password: string; name: string }> = {
-  officer1: { password: "Demo@1234", name: "कृषी सहायक - अनिल देशमुख" },
-  officer2: { password: "Demo@1234", name: "तलाठी - स्वाती पाटील" },
-};

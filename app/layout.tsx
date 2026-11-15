@@ -5,8 +5,8 @@ import { mr } from "@/lib/i18n.ts";
 
 export const metadata = { title: "शेतकरी सहाय्यक", description: mr.tagline };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
-  const o = currentOfficer();
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const o = await currentOfficer();
   return (
     <html lang="mr">
       <body>
