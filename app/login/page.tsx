@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { mr } from "@/lib/i18n.ts";
 
 export default function Login({ searchParams }: { searchParams: { error?: string } }) {
@@ -11,7 +10,6 @@ export default function Login({ searchParams }: { searchParams: { error?: string
       <label htmlFor="p">{mr.password}</label>
       <input id="p" name="password" type="password" autoComplete="current-password" required />
       <p><button className="btn" type="submit">{mr.login}</button></p>
-      <p>{mr.noAccount} <Link href="/signup">{mr.signup}</Link></p>
     </form>
   );
 }
